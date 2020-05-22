@@ -16,4 +16,7 @@ public class Control {
 		logica.drawHumans();
 	}
 
+	public void syso() {
+		logica.syso();
+	}
 }

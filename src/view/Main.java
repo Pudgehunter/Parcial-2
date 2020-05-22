@@ -23,6 +23,7 @@ public class Main extends PApplet {
 	public void draw() {
 		background(255);
 		this.controler.CreateFigures();
+		this.controler.syso();
 	}
 
 }

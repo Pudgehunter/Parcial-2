@@ -2,10 +2,12 @@ package model;
 
 import processing.core.PApplet;
 
-public class Bolas implements Runnable {
+public abstract class Bolas implements Runnable {
 
 	protected int posX,posY,velX,velY,dirX,dirY,r,g,b,tam;
 	protected PApplet app;
+	protected boolean soyInfectado;
+	
 	public Bolas(PApplet app) {
 		this.app = app;
 		//El uno es para evitar ese bug raro que salen cuando salen en la posicion 0
@@ -25,10 +27,8 @@ public class Bolas implements Runnable {
 	//Metodos
 	
 	//Aquí estoy pintando las bolas
-	public void dibujarBolas() {
-		app.fill(r,g,b);
-		app.ellipse(posX, posY, tam, tam);
-	}
+	public abstract void dibujarBolas();
+	
 	public void mover() {
 		this.posX = posX + velX*dirX;
 		this.posY = posY + velY*dirY;
@@ -114,6 +114,14 @@ public class Bolas implements Runnable {
 
 	public void setDirY(int dirY) {
 		this.dirY = dirY;
+	}
+
+	public boolean isSoyInfectado() {
+		return soyInfectado;
+	}
+
+	public void setSoyInfectado(boolean soyInfectado) {
+		this.soyInfectado = soyInfectado;
 	}
 	
 	
