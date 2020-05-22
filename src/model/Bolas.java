@@ -4,20 +4,21 @@ import processing.core.PApplet;
 
 public class Bolas implements Runnable {
 
-	private int posX,posY,velX,velY,dirX,dirY,r,g,b,tam;
-	private PApplet app;
+	protected int posX,posY,velX,velY,dirX,dirY,r,g,b,tam;
+	protected PApplet app;
 	public Bolas(PApplet app) {
 		this.app = app;
-		this.posX = (int) app.random(50,350);
-		this.posY = (int) app.random(50,350);
+		//El uno es para evitar ese bug raro que salen cuando salen en la posicion 0
+		this.posX = (int) app.random(1,500);
+		this.posY = (int) app.random(1,400);
 		this.velX = (int) app.random(-2,3);
 		this.velY = (int) app.random(-2,3);
 		this.dirX = (int) app.random(-1,2);
 		this.dirY = (int) app.random(-1,2);
 		//El problema dice que quiere las bolas de 7pixeles
 		this.tam = 7;
-		this.r = 255;
-		this.g = 0;
+		this.r = 0;
+		this.g = 255;
 		this.b = 0;
 	}
 	
@@ -49,6 +50,7 @@ public class Bolas implements Runnable {
 			this.dirY = this.dirY*-1;
 		}
 	}
+	
 	public void run() {
 		mover();
 		try {
@@ -57,4 +59,63 @@ public class Bolas implements Runnable {
 			e.printStackTrace();
 		}
 	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public int getR() {
+		return r;
+	}
+
+	public void setR(int r) {
+		this.r = r;
+	}
+
+	public int getG() {
+		return g;
+	}
+
+	public void setG(int g) {
+		this.g = g;
+	}
+
+	public int getB() {
+		return b;
+	}
+
+	public void setB(int b) {
+		this.b = b;
+	}
+
+	public int getDirX() {
+		return dirX;
+	}
+
+	public void setDirX(int dirX) {
+		this.dirX = dirX;
+	}
+
+	public int getDirY() {
+		return dirY;
+	}
+
+	public void setDirY(int dirY) {
+		this.dirY = dirY;
+	}
+	
+	
+	
 }
